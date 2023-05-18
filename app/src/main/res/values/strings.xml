@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">GitHub</string>
+    <string name="repositories_label">Repositories</string>
+    <string name="followers_and_following_label" formatted="true">%d following • %d followers</string>
 </resources>

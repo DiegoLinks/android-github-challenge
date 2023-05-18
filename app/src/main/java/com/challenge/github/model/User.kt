@@ -1,6 +1,6 @@
 package com.challenge.github.model
 
-class User(
+data class User(
     val login: String?,
     val id: Int?,
     val nodeId: String?,
