@@ -3,7 +3,7 @@ package com.challenge.github.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.challenge.github.BaseViewModel
+import com.challenge.github.core.BaseViewModel
 import com.challenge.github.core.NetworkResult
 import com.challenge.github.core.repository.GitHubRepository
 import com.challenge.github.core.util.Message.Companion.GENERIC_ERROR_MESSAGE

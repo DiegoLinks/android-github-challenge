@@ -12,7 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.challenge.github.Args.USER_ID
+import com.challenge.github.core.util.Args.USER_ID
 import com.challenge.github.R
 import com.challenge.github.gone
 import com.challenge.github.visible

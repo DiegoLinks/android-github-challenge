@@ -101,16 +101,37 @@
             app:layout_constraintStart_toEndOf="@id/iv_follow"
             tools:text="10 seguidores • 10 seguindo" />
 
+        <View
+            android:id="@+id/divisor"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_marginTop="@dimen/spacing_m"
+            android:background="@color/light_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_follow" />
+
         <TextView
             android:id="@+id/tv_repository_label"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_m"
-            android:layout_marginTop="@dimen/spacing_xl"
+            android:layout_marginTop="@dimen/spacing_m"
             android:text="@string/repositories_label"
             android:textSize="@dimen/text_size_m"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_follow" />
+            app:layout_constraintTop_toBottomOf="@id/divisor" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/repo_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_m"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_repository_label"
+            tools:listitem="@layout/item_list_repository" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
