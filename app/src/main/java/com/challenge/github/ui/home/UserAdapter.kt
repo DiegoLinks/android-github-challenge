@@ -1,10 +1,12 @@
-package com.challenge.github
+package com.challenge.github.ui.home
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.challenge.github.R
+import com.challenge.github.model.User
 
 class UserAdapter(
     private val userList: List<User>,

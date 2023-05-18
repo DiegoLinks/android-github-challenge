@@ -6,7 +6,7 @@
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.challenge.github.HomeFragment"
+        android:name="com.challenge.github.ui.home.HomeFragment"
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_userFragment"
@@ -14,6 +14,6 @@
     </fragment>
     <fragment
         android:id="@+id/userFragment"
-        android:name="com.challenge.github.UserFragment"
+        android:name="com.challenge.github.ui.user.UserFragment"
         tools:layout="@layout/fragment_user" />
 </navigation>

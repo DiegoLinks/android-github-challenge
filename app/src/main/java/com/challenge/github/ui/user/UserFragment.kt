@@ -1,4 +1,4 @@
-package com.challenge.github
+package com.challenge.github.ui.user
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,9 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.challenge.github.Args.USER_ID
+import com.challenge.github.R
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class UserFragment : Fragment() {
+
+    private val viewModel by viewModels<UserViewModel>()
 
     private var user: String? = null
 
