@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- This permission is required to use features that need to connect to network/internet.
+         In the case of this app, it is necessary for Glide to be able to load images from the internet through urls.-->
+    <!-- Essa permissão é necessária para usar recursos que precisam se conectar a rede/internet.
+         No caso desse app, é necessário para que o Glide possa carregar imagens da internet atráves das urls.-->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
