@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.challenge.github.Args.USER_ID
 import com.challenge.github.R
-import com.challenge.github.model.User
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,6 +20,12 @@ class HomeFragment : Fragment() {
     private val viewModel by viewModels<HomeViewModel>()
 
     private lateinit var recyclerView: RecyclerView
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        viewModel.getUserList()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,19 +36,12 @@ class HomeFragment : Fragment() {
         recyclerView = view.findViewById(R.id.recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        val users = listOf(
-            User("Usuário 1"),
-            User("Usuário 2"),
-            User("Usuário 3"),
-            User("Usuário 4"),
-            User("Usuário 5"),
-            User("Usuário 6")
-        )
-
-        recyclerView.adapter = UserAdapter(users) { user ->
-            val bundle = bundleOf(USER_ID to user.name)
-            Navigation.findNavController(view)
-                .navigate(R.id.action_homeFragment_to_userFragment, bundle)
+        viewModel.users.observe(viewLifecycleOwner) { users ->
+            recyclerView.adapter = UserAdapter(users) { user ->
+                val bundle = bundleOf(USER_ID to user.login)
+                Navigation.findNavController(view)
+                    .navigate(R.id.action_homeFragment_to_userFragment, bundle)
+            }
         }
 
         return view

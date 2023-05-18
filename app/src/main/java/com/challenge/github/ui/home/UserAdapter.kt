@@ -33,7 +33,7 @@ class UserAdapter(
         private val tvName: TextView = itemView.findViewById(R.id.tv_name)
 
         fun bind(user: User) {
-            tvName.text = user.name
+            tvName.text = user.login
         }
     }
 }
