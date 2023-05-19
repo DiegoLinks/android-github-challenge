@@ -71,4 +71,9 @@ dependencies {
     //Glide - Is an image loading and display library on Android read more in https://github.com/bumptech/glide
     //Glide - É uma biblioteca para o carregamento de imagens leia mais em https://github.com/bumptech/glide
     implementation 'com.github.bumptech.glide:glide:4.15.1'
+
+    //Moshi - Biblioteca de serialização/desserialização de JSON.
+    //Moshi - JSON serialization/deserialization library.
+    implementation "com.squareup.moshi:moshi:$moshi_version"
+    implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
 }

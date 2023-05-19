@@ -1,5 +1,7 @@
 package com.challenge.github.ui.home
 
+import android.app.AlertDialog
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
@@ -7,7 +9,9 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.os.bundleOf
@@ -22,6 +26,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.challenge.github.core.util.Args.USER_ID
 import com.challenge.github.R
 import com.challenge.github.core.gone
+import com.challenge.github.core.isDarkTheme
+import com.challenge.github.core.util.SimpleDialog.Companion.showSimpleDialog
 import com.challenge.github.core.visible
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -32,6 +38,10 @@ class HomeFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var progressBar: ProgressBar
+    private lateinit var viewError: View
+    private lateinit var ivError: ImageView
+    private lateinit var tvErrorTitle: TextView
+    private lateinit var tvErrorText: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +58,10 @@ class HomeFragment : Fragment() {
         progressBar = view.findViewById(R.id.progress_bar)
         recyclerView = view.findViewById(R.id.recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-
+        viewError = view.findViewById(R.id.view_error)
+        ivError = view.findViewById(R.id.iv_error)
+        tvErrorTitle = view.findViewById(R.id.tv_error_title)
+        tvErrorText = view.findViewById(R.id.tv_error_text)
         return view
     }
 
@@ -91,6 +104,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setObservers(view: View) {
+        val context = view.context
         viewModel.users.observe(viewLifecycleOwner) { users ->
             recyclerView.adapter = UserAdapter(users) { user ->
                 viewModel.restoreOriginalList()
@@ -107,8 +121,9 @@ class HomeFragment : Fragment() {
         }
 
         viewModel.error.observe(viewLifecycleOwner) {
-            showError(it)
+            showSimpleDialog(context, it)
             setViewState(false)
+            showErrorScreen(context)
         }
     }
 
@@ -130,7 +145,14 @@ class HomeFragment : Fragment() {
         recyclerView.gone()
     }
 
-    private fun showError(errorMessage: String) {
-        Toast.makeText(context, errorMessage, Toast.LENGTH_LONG).show()
+    private fun showErrorScreen(context: Context) {
+        val errorImage =
+            if (isDarkTheme(context)) R.drawable.ic_error_dark else R.drawable.ic_error_light
+        val divisorBackground = if (isDarkTheme(context)) R.color.light_gray else R.color.gray_blue
+
+        ivError.setImageResource(errorImage)
+        tvErrorTitle.setTextColor(resources.getColor(divisorBackground, null))
+        tvErrorText.setTextColor(resources.getColor(divisorBackground, null))
+        viewError.visible()
     }
 }

@@ -2,6 +2,7 @@ package com.challenge.github.core.repository
 
 import com.challenge.github.core.NetworkResult
 import com.challenge.github.core.network.GitHubApiService
+import com.challenge.github.core.util.ErrorResponseConvert.Companion.convertErrorBody
 import com.challenge.github.core.util.Message.Companion.GENERIC_ERROR_MESSAGE
 import com.challenge.github.model.response.UserDetailResponse
 import com.challenge.github.model.response.UserRepositoryResponse
@@ -36,7 +37,9 @@ class GitHubRepositoryImpl @Inject constructor(
             if (response.isSuccessful && body != null) {
                 NetworkResult.Success(body)
             } else {
-                NetworkResult.Error(errorMessage = response.message())
+                val errorMessage =
+                    convertErrorBody(response.errorBody())?.message ?: GENERIC_ERROR_MESSAGE
+                NetworkResult.Error(errorMessage = errorMessage)
             }
         } catch (e: HttpException) {
             NetworkResult.Error(errorMessage = e.message())
