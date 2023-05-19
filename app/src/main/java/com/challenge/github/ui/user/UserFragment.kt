@@ -15,11 +15,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.challenge.github.core.util.Args.USER_ID
 import com.challenge.github.R
-import com.challenge.github.gone
-import com.challenge.github.isDarkTheme
+import com.challenge.github.core.gone
+import com.challenge.github.core.groupVisibility
+import com.challenge.github.core.isDarkTheme
 import com.challenge.github.model.UserDetail
 import com.challenge.github.model.UserRepository
-import com.challenge.github.visible
+import com.challenge.github.core.visible
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,14 +33,24 @@ class UserFragment : Fragment() {
     private lateinit var ivAvatar: ImageView
     private lateinit var tvName: TextView
     private lateinit var tvLogin: TextView
+    private lateinit var ivCompany: ImageView
+    private lateinit var tvCompany: TextView
     private lateinit var ivLocation: ImageView
     private lateinit var tvLocation: TextView
     private lateinit var ivSite: ImageView
     private lateinit var tvSite: TextView
+    private lateinit var ivEmail: ImageView
+    private lateinit var tvEmail: TextView
+    private lateinit var ivTwitter: ImageView
+    private lateinit var tvTwitter: TextView
     private lateinit var ivFollow: ImageView
     private lateinit var tvFollow: TextView
-    private lateinit var divisor: View
+    private lateinit var topDivisor: View
+    private lateinit var middleDivisor: View
+    private lateinit var bottomDivisor: View
     private lateinit var recyclerView: RecyclerView
+    private lateinit var tvRepositoryNumber: TextView
+    private lateinit var tvGistsNumber: TextView
     private lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,21 +66,35 @@ class UserFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val view = inflater.inflate(R.layout.fragment_user, container, false)
+        bindViews(view)
+        return view
+    }
+
+    private fun bindViews(view: View) {
         ivAvatar = view.findViewById(R.id.iv_avatar)
         tvName = view.findViewById(R.id.tv_name)
         tvLogin = view.findViewById(R.id.tv_login)
+        ivCompany = view.findViewById(R.id.iv_company)
+        tvCompany = view.findViewById(R.id.tv_company)
         ivLocation = view.findViewById(R.id.iv_location)
         tvLocation = view.findViewById(R.id.tv_location)
         ivSite = view.findViewById(R.id.iv_site)
         tvSite = view.findViewById(R.id.tv_site)
+        ivEmail = view.findViewById(R.id.iv_email)
+        tvEmail = view.findViewById(R.id.tv_email)
+        ivTwitter = view.findViewById(R.id.iv_twitter)
+        tvTwitter = view.findViewById(R.id.tv_twitter)
         ivFollow = view.findViewById(R.id.iv_follow)
         tvFollow = view.findViewById(R.id.tv_follow)
-        divisor = view.findViewById(R.id.divisor)
+        topDivisor = view.findViewById(R.id.top_divisor)
+        middleDivisor = view.findViewById(R.id.middle_divisor)
+        bottomDivisor = view.findViewById(R.id.bottom_divisor)
         recyclerView = view.findViewById(R.id.repo_recycler_view)
         recyclerView.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        tvRepositoryNumber = view.findViewById(R.id.tv_repository_number)
+        tvGistsNumber = view.findViewById(R.id.tv_gists_number)
         progressBar = view.findViewById(R.id.progress_bar)
-        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -102,10 +127,16 @@ class UserFragment : Fragment() {
     private fun setLayout(user: UserDetail) {
         val context = context ?: return//TODO melhorar
 
+        val companyImage =
+            if (isDarkTheme(context)) R.drawable.ic_company_dark else R.drawable.ic_company_light
         val locationImage =
             if (isDarkTheme(context)) R.drawable.ic_location_dark else R.drawable.ic_location_light
         val siteImage =
             if (isDarkTheme(context)) R.drawable.ic_link_dark else R.drawable.ic_link_light
+        val emailImage =
+            if (isDarkTheme(context)) R.drawable.ic_email_dark else R.drawable.ic_email_light
+        val twitterImage =
+            if (isDarkTheme(context)) R.drawable.ic_twitter_dark else R.drawable.ic_twitter_light
         val followImage =
             if (isDarkTheme(context)) R.drawable.ic_follow_dark else R.drawable.ic_follow_light
         val divisorBackground = if (isDarkTheme(context)) R.color.gray else R.color.light_gray
@@ -118,17 +149,40 @@ class UserFragment : Fragment() {
             .into(ivAvatar)
         tvName.text = user.name
         tvLogin.text = user.login
+
+        ivCompany.setImageResource(companyImage)
+        tvCompany.text = user.company
+        groupVisibility(user.company, ivCompany, tvCompany)
+
+        ivLocation.setImageResource(locationImage)
         tvLocation.text = user.location
+        groupVisibility(user.location, ivLocation, tvLocation)
+
+        ivSite.setImageResource(siteImage)
         tvSite.text = user.blog
+        groupVisibility(user.blog, ivSite, tvSite)
+
+        ivEmail.setImageResource(emailImage)
+        tvEmail.text = user.email
+        groupVisibility(user.email, ivEmail, tvEmail)
+
+        ivTwitter.setImageResource(twitterImage)
+        tvTwitter.text = user.twitterUsername
+        groupVisibility(user.twitterUsername, ivTwitter, tvTwitter)
+
+        ivFollow.setImageResource(followImage)
         tvFollow.text = context.getString(
             R.string.followers_and_following_label,
             user.followers,
             user.following
         )
-        ivLocation.setImageResource(locationImage)
-        ivSite.setImageResource(siteImage)
-        divisor.setBackgroundColor(resources.getColor(divisorBackground, null))
-        ivFollow.setImageResource(followImage)
+
+        tvRepositoryNumber.text = user.publicRepos.toString()
+        tvGistsNumber.text = user.publicGists.toString()
+
+        topDivisor.setBackgroundColor(resources.getColor(divisorBackground, null))
+        middleDivisor.setBackgroundColor(resources.getColor(divisorBackground, null))
+        bottomDivisor.setBackgroundColor(resources.getColor(divisorBackground, null))
     }
 
     private fun setRepositoriesLayout(repositories: List<UserRepository>) {

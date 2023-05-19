@@ -1,5 +1,6 @@
-package com.challenge.github.model
+package com.challenge.github.model.response
 
+import com.challenge.github.model.UserRepository
 import kotlinx.serialization.SerialName
 
 data class UserRepositoryResponse(

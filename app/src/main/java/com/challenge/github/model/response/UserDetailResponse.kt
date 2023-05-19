@@ -1,5 +1,6 @@
-package com.challenge.github.model
+package com.challenge.github.model.response
 
+import com.challenge.github.model.UserDetail
 import kotlinx.serialization.SerialName
 
 data class UserDetailResponse(
@@ -21,7 +22,7 @@ data class UserDetailResponse(
     @SerialName("received_events_url") val received_events_url: String?,
     @SerialName("type") val type: String,
     @SerialName("site_admin") val site_admin: Boolean,
-    @SerialName("name") val name: String,
+    @SerialName("name") val name: String?,
     @SerialName("company") val company: String?,
     @SerialName("blog") val blog: String?,
     @SerialName("location") val location: String?,

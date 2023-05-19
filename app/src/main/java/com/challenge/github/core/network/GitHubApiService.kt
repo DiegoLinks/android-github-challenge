@@ -1,8 +1,8 @@
 package com.challenge.github.core.network
 
-import com.challenge.github.model.UserDetailResponse
-import com.challenge.github.model.UserRepositoryResponse
-import com.challenge.github.model.UserResponse
+import com.challenge.github.model.response.UserDetailResponse
+import com.challenge.github.model.response.UserRepositoryResponse
+import com.challenge.github.model.response.UserResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

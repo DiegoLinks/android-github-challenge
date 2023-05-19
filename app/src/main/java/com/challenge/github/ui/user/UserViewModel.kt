@@ -9,7 +9,7 @@ import com.challenge.github.core.repository.GitHubRepository
 import com.challenge.github.core.util.Message.Companion.GENERIC_ERROR_MESSAGE
 import com.challenge.github.model.UserDetail
 import com.challenge.github.model.UserRepository
-import com.challenge.github.model.toUserDetail
+import com.challenge.github.model.response.toUserDetail
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers

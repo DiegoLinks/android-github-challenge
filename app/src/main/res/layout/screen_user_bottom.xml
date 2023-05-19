@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        android:id="@+id/middle_divisor"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/light_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_repositories"
+        android:layout_width="@dimen/view_size_m"
+        android:layout_height="@dimen/view_size_m"
+        android:layout_marginHorizontal="@dimen/spacing_m"
+        android:layout_marginTop="@dimen/spacing_m"
+        android:background="@color/gray_blue"
+        android:padding="@dimen/spacing_xs"
+        android:src="@drawable/ic_repository"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/middle_divisor" />
+
+    <TextView
+        android:id="@+id/tv_repository"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_m"
+        android:text="@string/repositories_label"
+        app:layout_constraintBottom_toBottomOf="@id/iv_repositories"
+        app:layout_constraintStart_toEndOf="@id/iv_repositories"
+        app:layout_constraintTop_toTopOf="@id/iv_repositories" />
+
+    <TextView
+        android:id="@+id/tv_repository_number"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/spacing_m"
+        app:layout_constraintBottom_toBottomOf="@id/iv_repositories"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_repositories"
+        tools:text="64" />
+
+    <ImageView
+        android:id="@+id/iv_gists"
+        android:layout_width="@dimen/view_size_m"
+        android:layout_height="@dimen/view_size_m"
+        android:layout_marginHorizontal="@dimen/spacing_m"
+        android:layout_marginTop="@dimen/spacing_m"
+        android:background="@color/orange"
+        android:padding="@dimen/spacing_xs"
+        android:src="@drawable/ic_gist"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_repositories" />
+
+    <TextView
+        android:id="@+id/tv_gists"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_m"
+        android:text="@string/gists_label"
+        app:layout_constraintBottom_toBottomOf="@id/iv_gists"
+        app:layout_constraintStart_toEndOf="@id/iv_gists"
+        app:layout_constraintTop_toTopOf="@id/iv_gists" />
+
+    <TextView
+        android:id="@+id/tv_gists_number"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/spacing_m"
+        app:layout_constraintBottom_toBottomOf="@id/iv_gists"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_gists"
+        tools:text="1" />
+
+    <View
+        android:id="@+id/bottom_divisor"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_size_m"
+        android:layout_marginTop="@dimen/spacing_m"
+        android:background="@color/light_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_gists_number" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

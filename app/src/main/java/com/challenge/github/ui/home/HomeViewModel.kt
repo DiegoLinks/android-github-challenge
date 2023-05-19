@@ -8,7 +8,7 @@ import com.challenge.github.core.NetworkResult
 import com.challenge.github.core.repository.GitHubRepository
 import com.challenge.github.core.util.Message.Companion.GENERIC_ERROR_MESSAGE
 import com.challenge.github.model.User
-import com.challenge.github.model.toUser
+import com.challenge.github.model.response.toUser
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
