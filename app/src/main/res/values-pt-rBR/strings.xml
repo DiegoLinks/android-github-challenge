@@ -3,4 +3,6 @@
     <string name="app_name">GitHub</string>
     <string name="repositories_label">Repositórios</string>
     <string name="followers_and_following_label" formatted="true">%d seguidores • %d seguindo</string>
+    <string name="error_title">Ops! Aconteceu um erro.</string>
+    <string name="error_text">Estamos trabalhando para solucioná-lo.</string>
 </resources>
