@@ -1,4 +1,4 @@
-package com.challenge.github
+package com.challenge.github.core
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

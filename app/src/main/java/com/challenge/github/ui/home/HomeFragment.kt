@@ -12,8 +12,10 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.challenge.github.Args.USER_ID
+import com.challenge.github.core.util.Args.USER_ID
 import com.challenge.github.R
+import com.challenge.github.core.gone
+import com.challenge.github.core.visible
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -78,13 +80,13 @@ class HomeFragment : Fragment() {
     }
 
     private fun showContent() {
-        progressBar.visibility = View.INVISIBLE
-        recyclerView.visibility = View.VISIBLE
+        progressBar.gone()
+        recyclerView.visible()
     }
 
     private fun loadingContent() {
-        progressBar.visibility = View.VISIBLE
-        recyclerView.visibility = View.INVISIBLE
+        progressBar.visible()
+        recyclerView.gone()
     }
 
     private fun showError(errorMessage: String) {

@@ -3,7 +3,9 @@ package com.challenge.github.core.repository
 import com.challenge.github.core.NetworkResult
 import com.challenge.github.core.network.GitHubApiService
 import com.challenge.github.core.util.Message.Companion.GENERIC_ERROR_MESSAGE
-import com.challenge.github.model.UserResponse
+import com.challenge.github.model.response.UserDetailResponse
+import com.challenge.github.model.response.UserRepositoryResponse
+import com.challenge.github.model.response.UserResponse
 import java.io.IOException
 import javax.inject.Inject
 import retrofit2.HttpException
@@ -15,6 +17,14 @@ class GitHubRepositoryImpl @Inject constructor(
 
     override suspend fun getUserList(): NetworkResult<List<UserResponse>> {
         return handleApi { gitHubApiService.getUsers() }
+    }
+
+    override suspend fun getUser(userLogin: String): NetworkResult<UserDetailResponse> {
+        return handleApi { gitHubApiService.getUser(userLogin) }
+    }
+
+    override suspend fun getUserRepositories(userLogin: String): NetworkResult<List<UserRepositoryResponse>> {
+        return handleApi { gitHubApiService.getUserRepositories(userLogin) }
     }
 
     suspend fun <T : Any> handleApi(

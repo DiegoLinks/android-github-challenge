@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GitHub</string>
+    <string name="repositories_label">Repositórios</string>
+    <string name="followers_and_following_label" formatted="true">%d seguidores • %d seguindo</string>
+</resources>

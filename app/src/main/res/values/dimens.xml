@@ -11,4 +11,8 @@
     <dimen name="text_size_m">16sp</dimen>
     <dimen name="text_size_l">18sp</dimen>
     <dimen name="text_size_xl">24sp</dimen>
+
+    <dimen name="view_size_s">12dp</dimen>
+    <dimen name="view_size_m">24dp</dimen>
+    <dimen name="view_size_l">72dp</dimen>
 </resources>
