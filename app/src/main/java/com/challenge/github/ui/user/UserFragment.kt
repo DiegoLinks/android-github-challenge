@@ -1,5 +1,6 @@
 package com.challenge.github.ui.user
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -100,13 +101,12 @@ class UserFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getUserDetail(user ?: "")
-
-        setObservers()
+        setObservers(view.context)
     }
 
-    private fun setObservers() {
+    private fun setObservers(context: Context) {
         viewModel.user.observe(viewLifecycleOwner) { user ->
-            setLayout(user)
+            setLayout(user, context)
             setViewState(false)
         }
 
@@ -124,9 +124,7 @@ class UserFragment : Fragment() {
         }
     }
 
-    private fun setLayout(user: UserDetail) {
-        val context = context ?: return//TODO melhorar
-
+    private fun setLayout(user: UserDetail, context: Context) {
         val companyImage =
             if (isDarkTheme(context)) R.drawable.ic_company_dark else R.drawable.ic_company_light
         val locationImage =
@@ -145,7 +143,7 @@ class UserFragment : Fragment() {
             .with(context)
             .load(user.avatarUrl)
             .circleCrop()
-            .placeholder(R.drawable.ic_launcher_background)
+            .placeholder(R.color.black)
             .into(ivAvatar)
         tvName.text = user.name
         tvLogin.text = user.login

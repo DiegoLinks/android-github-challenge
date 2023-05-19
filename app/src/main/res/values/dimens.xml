@@ -14,5 +14,6 @@
 
     <dimen name="view_size_s">12dp</dimen>
     <dimen name="view_size_m">24dp</dimen>
-    <dimen name="view_size_l">72dp</dimen>
+    <dimen name="view_size_l">48dp</dimen>
+    <dimen name="view_size_xl">72dp</dimen>
 </resources>

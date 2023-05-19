@@ -27,6 +27,9 @@ class HomeViewModel @Inject constructor(
     private val _error = MutableLiveData<String>()
     val error: LiveData<String> = _error
 
+    private var receivedUserList: List<User> = listOf()
+    private var currentSearchText: String = ""
+
     fun getUserList() {
         _isLoading.value = true
 
@@ -35,6 +38,7 @@ class HomeViewModel @Inject constructor(
                 is NetworkResult.Success -> {
                     _users.postValue(response.data?.map { userResponse -> userResponse.toUser() })
                     _isLoading.postValue(false)
+                    receivedUserList = users.value ?: emptyList()
                 }
                 is NetworkResult.Error -> {
                     _error.postValue(response.message ?: GENERIC_ERROR_MESSAGE)
@@ -45,5 +49,25 @@ class HomeViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    fun updateListWithSearchText(searchText: String) {
+        val filterList = mutableListOf<User>()
+        currentSearchText = searchText.lowercase()
+
+        receivedUserList.forEach { user ->
+            val name = user.login?.lowercase() ?: ""
+            if (name.contains(currentSearchText)) {
+                filterList.add(user)
+            }
+        }
+
+        _users.postValue(filterList)
+        currentSearchText = ""
+    }
+
+    fun restoreOriginalList() {
+        if (receivedUserList.isEmpty()) return
+        _users.value = receivedUserList
     }
 }
