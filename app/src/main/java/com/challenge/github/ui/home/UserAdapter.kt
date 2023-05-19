@@ -3,8 +3,10 @@ package com.challenge.github.ui.home
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.challenge.github.R
 import com.challenge.github.model.User
 
@@ -30,10 +32,18 @@ class UserAdapter(
     }
 
     inner class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val ivAvatar: ImageView = itemView.findViewById(R.id.iv_avatar)
         private val tvName: TextView = itemView.findViewById(R.id.tv_name)
-
+        private val tvUrl: TextView = itemView.findViewById(R.id.tv_url)
         fun bind(user: User) {
+            Glide
+                .with(itemView.context)
+                .load(user.avatarUrl)
+                .circleCrop()
+                .placeholder(R.color.black)
+                .into(ivAvatar)
             tvName.text = user.login
+            tvUrl.text = user.url
         }
     }
 }

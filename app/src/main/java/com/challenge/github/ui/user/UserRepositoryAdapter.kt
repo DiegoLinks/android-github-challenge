@@ -44,7 +44,7 @@ class UserRepositoryAdapter(
                 .with(itemView.context)
                 .load(repository.owner.avatarUrl)
                 .circleCrop()
-                .placeholder(R.drawable.ic_launcher_background)
+                .placeholder(R.color.black)
                 .into(ivAvatar)
             tvOwner.text = repository.owner.login
             tvRepositoryName.text = repository.name
