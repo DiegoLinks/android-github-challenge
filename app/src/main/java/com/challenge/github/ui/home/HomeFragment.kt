@@ -1,5 +1,6 @@
 package com.challenge.github.ui.home
 
+import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -26,6 +27,7 @@ import com.challenge.github.core.util.Args.USER_ID
 import com.challenge.github.R
 import com.challenge.github.core.gone
 import com.challenge.github.core.isDarkTheme
+import com.challenge.github.core.util.SimpleDialog.Companion.showSimpleDialog
 import com.challenge.github.core.visible
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -102,6 +104,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setObservers(view: View) {
+        val context = view.context
         viewModel.users.observe(viewLifecycleOwner) { users ->
             recyclerView.adapter = UserAdapter(users) { user ->
                 viewModel.restoreOriginalList()
@@ -118,9 +121,9 @@ class HomeFragment : Fragment() {
         }
 
         viewModel.error.observe(viewLifecycleOwner) {
-            showError(it)
+            showSimpleDialog(context, it)
             setViewState(false)
-            showErrorScreen(view.context)
+            showErrorScreen(context)
         }
     }
 
@@ -151,9 +154,5 @@ class HomeFragment : Fragment() {
         tvErrorTitle.setTextColor(resources.getColor(divisorBackground, null))
         tvErrorText.setTextColor(resources.getColor(divisorBackground, null))
         viewError.visible()
-    }
-
-    private fun showError(errorMessage: String) {
-        Toast.makeText(context, errorMessage, Toast.LENGTH_LONG).show()
     }
 }
