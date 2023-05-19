@@ -2,13 +2,20 @@ package com.challenge.github.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.core.os.bundleOf
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -47,12 +54,46 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val menuHost: MenuHost = requireActivity()
+        setSearchMenu(menuHost)
         setObservers(view)
+    }
+
+    private fun setSearchMenu(menuHost: MenuHost) {
+        menuHost.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.menu_main, menu)
+
+                val searchItem = menu.findItem(R.id.menu_search)
+                val searchView = searchItem.actionView as SearchView
+
+                searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                    override fun onQueryTextSubmit(query: String): Boolean {
+                        viewModel.updateListWithSearchText(query)
+                        return true
+                    }
+
+                    override fun onQueryTextChange(newText: String): Boolean {
+                        if (newText.isBlank()) {
+                            viewModel.restoreOriginalList()
+                        } else {
+                            viewModel.updateListWithSearchText(newText)
+                        }
+                        return true
+                    }
+                })
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return true
+            }
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 
     private fun setObservers(view: View) {
         viewModel.users.observe(viewLifecycleOwner) { users ->
             recyclerView.adapter = UserAdapter(users) { user ->
+                viewModel.restoreOriginalList()
                 val bundle = bundleOf(USER_ID to user.login)
                 Navigation.findNavController(view)
                     .navigate(R.id.action_homeFragment_to_userFragment, bundle)
