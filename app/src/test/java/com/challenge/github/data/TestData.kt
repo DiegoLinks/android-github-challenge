@@ -1,0 +1,267 @@
+package com.challenge.github.data
+
+import com.challenge.github.model.User
+import com.challenge.github.model.response.LicenseResponse
+import com.challenge.github.model.response.UserDetailResponse
+import com.challenge.github.model.response.UserRepositoryResponse
+import com.challenge.github.model.response.UserResponse
+
+val userResponse1 = UserResponse(
+    id = 1,
+    login = "john_doe",
+    node_id = "nodeId1",
+    avatar_url = "https://example.com/avatar1.png",
+    gravatar_id = "gravatarId1",
+    url = "https://example.com/users/john_doe",
+    html_url = "https://example.com/users/john_doe/profile",
+    followers_url = "https://example.com/users/john_doe/followers",
+    following_url = "https://example.com/users/john_doe/following",
+    gists_url = "https://example.com/users/john_doe/gists",
+    starred_url = "https://example.com/users/john_doe/starred",
+    subscriptions_url = "https://example.com/users/john_doe/subscriptions",
+    organizations_url = "https://example.com/users/john_doe/orgs",
+    repos_url = "https://example.com/users/john_doe/repos",
+    events_url = "https://example.com/users/john_doe/events",
+    received_events_url = "https://example.com/users/john_doe/received_events",
+    type = "User",
+    site_admin = false
+)
+
+val userResponse2 = UserResponse(
+    id = 2,
+    login = "jane_smith",
+    node_id = "nodeId2",
+    avatar_url = "https://example.com/avatar2.png",
+    gravatar_id = "gravatarId2",
+    url = "https://example.com/users/jane_smith",
+    html_url = "https://example.com/users/jane_smith/profile",
+    followers_url = "https://example.com/users/jane_smith/followers",
+    following_url = "https://example.com/users/jane_smith/following",
+    gists_url = "https://example.com/users/jane_smith/gists",
+    starred_url = "https://example.com/users/jane_smith/starred",
+    subscriptions_url = "https://example.com/users/jane_smith/subscriptions",
+    organizations_url = "https://example.com/users/jane_smith/orgs",
+    repos_url = "https://example.com/users/jane_smith/repos",
+    events_url = "https://example.com/users/jane_smith/events",
+    received_events_url = "https://example.com/users/jane_smith/received_events",
+    type = "User",
+    site_admin = true
+)
+
+val userResponse3 = UserResponse(
+    id = 3,
+    login = "bob_johnson",
+    node_id = "nodeId3",
+    avatar_url = "https://example.com/avatar3.png",
+    gravatar_id = "gravatarId3",
+    url = "https://example.com/users/bob_johnson",
+    html_url = "https://example.com/users/bob_johnson/profile",
+    followers_url = "https://example.com/users/bob_johnson/followers",
+    following_url = "https://example.com/users/bob_johnson/following",
+    gists_url = "https://example.com/users/bob_johnson/gists",
+    starred_url = "https://example.com/users/bob_johnson/starred",
+    subscriptions_url = "https://example.com/users/bob_johnson/subscriptions",
+    organizations_url = "https://example.com/users/bob_johnson/orgs",
+    repos_url = "https://example.com/users/bob_johnson/repos",
+    events_url = "https://example.com/users/bob_johnson/events",
+    received_events_url = "https://example.com/users/bob_johnson/received_events",
+    type = "User",
+    site_admin = false
+)
+
+val userResponseList = listOf(userResponse1, userResponse2, userResponse3)
+
+val user1 = User(
+    login = "john_doe",
+    id = 1,
+    nodeId = "nodeId1",
+    avatarUrl = "https://example.com/avatar1.png",
+    gravatarId = "gravatarId1",
+    url = "https://example.com/users/john_doe",
+    htmlUrl = "https://example.com/users/john_doe/profile",
+    followersUrl = "https://example.com/users/john_doe/followers",
+    followingUrl = "https://example.com/users/john_doe/following",
+    gistsUrl = "https://example.com/users/john_doe/gists",
+    starredUrl = "https://example.com/users/john_doe/starred",
+    subscriptionsUrl = "https://example.com/users/john_doe/subscriptions",
+    organizationsUrl = "https://example.com/users/john_doe/orgs",
+    reposUrl = "https://example.com/users/john_doe/repos",
+    eventsUrl = "https://example.com/users/john_doe/events",
+    receivedEventsUrl = "https://example.com/users/john_doe/received_events",
+    type = "User",
+    siteAdmin = false
+)
+
+val user2 = User(
+    login = "jane_smith",
+    id = 2,
+    nodeId = "nodeId2",
+    avatarUrl = "https://example.com/avatar2.png",
+    gravatarId = "gravatarId2",
+    url = "https://example.com/users/jane_smith",
+    htmlUrl = "https://example.com/users/jane_smith/profile",
+    followersUrl = "https://example.com/users/jane_smith/followers",
+    followingUrl = "https://example.com/users/jane_smith/following",
+    gistsUrl = "https://example.com/users/jane_smith/gists",
+    starredUrl = "https://example.com/users/jane_smith/starred",
+    subscriptionsUrl = "https://example.com/users/jane_smith/subscriptions",
+    organizationsUrl = "https://example.com/users/jane_smith/orgs",
+    reposUrl = "https://example.com/users/jane_smith/repos",
+    eventsUrl = "https://example.com/users/jane_smith/events",
+    receivedEventsUrl = "https://example.com/users/jane_smith/received_events",
+    type = "User",
+    siteAdmin = true
+)
+
+val user3 = User(
+    login = "bob_johnson",
+    id = 3,
+    nodeId = "nodeId3",
+    avatarUrl = "https://example.com/avatar3.png",
+    gravatarId = "gravatarId3",
+    url = "https://example.com/users/bob_johnson",
+    htmlUrl = "https://example.com/users/bob_johnson/profile",
+    followersUrl = "https://example.com/users/bob_johnson/followers",
+    followingUrl = "https://example.com/users/bob_johnson/following",
+    gistsUrl = "https://example.com/users/bob_johnson/gists",
+    starredUrl = "https://example.com/users/bob_johnson/starred",
+    subscriptionsUrl = "https://example.com/users/bob_johnson/subscriptions",
+    organizationsUrl = "https://example.com/users/bob_johnson/orgs",
+    reposUrl = "https://example.com/users/bob_johnson/repos",
+    eventsUrl = "https://example.com/users/bob_johnson/events",
+    receivedEventsUrl = "https://example.com/users/bob_johnson/received_events",
+    type = "User",
+    siteAdmin = false
+)
+
+val userDetailResponse = UserDetailResponse(
+    id = 1,
+    login = "john_doe",
+    node_id = "abc123",
+    avatar_url = "https://example.com/avatar",
+    gravatar_id = "def456",
+    url = "https://example.com/user/john_doe",
+    html_url = "https://example.com/profile/john_doe",
+    followers_url = "https://example.com/user/john_doe/followers",
+    following_url = "https://example.com/user/john_doe/following",
+    gists_url = "https://example.com/user/john_doe/gists",
+    starred_url = "https://example.com/user/john_doe/starred",
+    subscriptions_url = "https://example.com/user/john_doe/subscriptions",
+    organizations_url = "https://example.com/user/john_doe/orgs",
+    repos_url = "https://example.com/user/john_doe/repos",
+    events_url = "https://example.com/user/john_doe/events",
+    received_events_url = "https://example.com/user/john_doe/received_events",
+    type = "User",
+    site_admin = false,
+    name = "John Doe",
+    company = "Example Company",
+    blog = "https://example.com/blog",
+    location = "Somewhere",
+    email = "john.doe@example.com",
+    hireable = true,
+    bio = "Software Developer",
+    twitter_username = "johndoe",
+    public_repos = 10,
+    public_gists = 5,
+    followers = 100,
+    following = 50,
+    created_at = "2022-01-01",
+    updated_at = "2022-02-01"
+)
+
+val userLogin = userDetailResponse.login
+
+val licenseResponse = LicenseResponse(
+    key = "apache-2.0",
+    name = "Apache License 2.0",
+    spdx_id = "Apache-2.0",
+    url = "https://www.example.com/licenses/apache-2.0",
+    node_id = "abc123"
+)
+
+val userRepositoryResponse = UserRepositoryResponse(
+    id = 123,
+    node_id = "abc123",
+    name = "My Repository",
+    full_name = "myusername/my-repository",
+    private = false,
+    owner = userResponse1,
+    html_url = "https://www.example.com/my-repository",
+    description = "This is my repository",
+    fork = false,
+    url = "https://api.github.com/repos/myusername/my-repository",
+    forks_url = "https://api.github.com/repos/myusername/my-repository/forks",
+    keys_url = "https://api.github.com/repos/myusername/my-repository/keys",
+    collaborators_url = "https://api.github.com/repos/myusername/my-repository/collaborators",
+    teams_url = null,
+    hooks_url = null,
+    issue_events_url = null,
+    events_url = null,
+    assignees_url = "https://api.github.com/repos/myusername/my-repository/assignees",
+    branches_url = "https://api.github.com/repos/myusername/my-repository/branches",
+    tags_url = "https://api.github.com/repos/myusername/my-repository/tags",
+    blobs_url = null,
+    git_tags_url = null,
+    git_refs_url = null,
+    trees_url = "https://api.github.com/repos/myusername/my-repository/trees",
+    statuses_url = "https://api.github.com/repos/myusername/my-repository/statuses",
+    languages_url = null,
+    stargazers_url = "https://api.github.com/repos/myusername/my-repository/stargazers",
+    contributors_url = "https://api.github.com/repos/myusername/my-repository/contributors",
+    subscribers_url = "https://api.github.com/repos/myusername/my-repository/subscribers",
+    subscription_url = "https://api.github.com/repos/myusername/my-repository/subscription",
+    commits_url = "https://api.github.com/repos/myusername/my-repository/commits",
+    git_commits_url = "https://api.github.com/repos/myusername/my-repository/git/commits",
+    comments_url = "https://api.github.com/repos/myusername/my-repository/comments",
+    issue_comment_url = "https://api.github.com/repos/myusername/my-repository/issues/comments",
+    contents_url = "https://api.github.com/repos/myusername/my-repository/contents",
+    compare_url = "https://api.github.com/repos/myusername/my-repository/compare",
+    merges_url = "https://api.github.com/repos/myusername/my-repository/merges",
+    archive_url = "https://api.github.com/repos/myusername/my-repository/{archive_format}{/ref}",
+    downloads_url = "https://api.github.com/repos/myusername/my-repository/downloads",
+    issues_url = "https://api.github.com/repos/myusername/my-repository/issues",
+    pulls_url = "https://api.github.com/repos/myusername/my-repository/pulls",
+    milestones_url = "https://api.github.com/repos/myusername/my-repository/milestones",
+    notifications_url = "https://api.github.com/repos/myusername/my-repository/notifications",
+    labels_url = "https://api.github.com/repos/myusername/my-repository/labels",
+    releases_url = "https://api.github.com/repos/myusername/my-repository/releases",
+    deployments_url = "https://api.github.com/repos/myusername/my-repository/deployments",
+    created_at = "2023-05-01T12:00:00Z",
+    updated_at = "2023-05-10T15:30:00Z",
+    pushed_at = "2023-05-10T15:30:00Z",
+    git_url = "git://github.com/myusername/my-repository.git",
+    ssh_url = "git@github.com:myusername/my-repository.git",
+    clone_url = "https://github.com/myusername/my-repository.git",
+    svn_url = "https://github.com/myusername/my-repository",
+    homepage = null,
+    size = 1024,
+    stargazers_count = 10,
+    watchers_count = 5,
+    language = "Kotlin",
+    has_issues = true,
+    has_projects = false,
+    has_downloads = true,
+    has_wiki = false,
+    has_pages = true,
+    has_discussions = false,
+    forks_count = 2,
+    mirror_url = null,
+    archived = false,
+    disabled = false,
+    open_issues_count = 3,
+    license = licenseResponse,
+    allow_forking = true,
+    is_template = false,
+    web_commit_sign_off_required = true,
+    topics = listOf("android", "github", "repository"),
+    visibility = "public",
+    forks = 2,
+    open_issues = 3,
+    watchers = 5,
+    default_branch = "main"
+)
+
+val userRepositoryList = listOf(userRepositoryResponse, userRepositoryResponse, userRepositoryResponse)
+
+
+
