@@ -50,17 +50,19 @@ Another important observation is that in a real project, the lists can vary from
 
 ### Some topics covered in the project include:
  • Git, GitFlow</br>
- • Configuração de gradle</br>
+ • Gradle</br>
  • JetPack Navigation, NavGraph, Single Activity</br>
  • Dependency injection</br>
  • API REST, Retrofit, OkHttp, Kotlin Serialization</br>
  • Material Design</br>
  • MVVM</br>
+ • LiveData</br>
  • Image processing with Glide</br>
  • Coroutines</br>
  • Extension Functions</br>
  • Dark mode</br>
  • Standard English version and Portuguese translation</br>
+ • Automated tests
 
 ### Some libraries added to the project include:
  • Jetpack Navigation</br>
@@ -134,12 +136,13 @@ Outra observação importante, num projeto real as listas podem ser de 0 a N e n
  • Injeção de dependências</br>
  • API REST, Retrofit, OkHttp, Kotlin Serialização</br>
  • Material Design</br>
- • Arquitetura MVVM</br>
+ • LiveData</br>
  • Tratamento de imagens com Glide</br>
  • Corrotines</br>
  • Extension Functions</br>
  • Tema escuro</br>
  • Versão padrão inglês e tradução Portugûes</br>
+ • Testes automatizados</br>
 
 ### Some libraries added to the project include:
  • Jetpack Navigation</br>
