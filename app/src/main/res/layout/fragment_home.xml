@@ -17,6 +17,48 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/item_list_user" />
 
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shimmer_base_color="@color/design_shimmer_light"
+        app:shimmer_direction="top_to_bottom"
+        app:shimmer_duration="800"
+        app:shimmer_repeat_delay="1000"
+        app:shimmer_shape="linear">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/item_list_user_shimmer" />
+
+            <include layout="@layout/item_list_user_shimmer" />
+
+            <include layout="@layout/item_list_user_shimmer" />
+
+            <include layout="@layout/item_list_user_shimmer" />
+
+            <include layout="@layout/item_list_user_shimmer" />
+
+            <include layout="@layout/item_list_user_shimmer" />
+
+            <include layout="@layout/item_list_user_shimmer" />
+
+            <include layout="@layout/item_list_user_shimmer" />
+
+            <include layout="@layout/item_list_user_shimmer" />
+
+            <include layout="@layout/item_list_user_shimmer" />
+
+        </LinearLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
     <include
         android:id="@+id/view_error"
         layout="@layout/screen_generic_error"
@@ -27,16 +69,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        android:layout_width="@dimen/view_size_xl"
-        android:layout_height="@dimen/view_size_xl"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

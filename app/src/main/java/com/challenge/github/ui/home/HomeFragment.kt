@@ -1,6 +1,5 @@
 package com.challenge.github.ui.home
 
-import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,9 +9,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.ProgressBar
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.os.bundleOf
 import androidx.core.view.MenuHost
@@ -23,13 +20,16 @@ import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.challenge.github.core.util.Args.USER_ID
 import com.challenge.github.R
 import com.challenge.github.core.gone
+import com.challenge.github.core.invisible
 import com.challenge.github.core.isDarkTheme
+import com.challenge.github.core.util.Args.USER_ID
 import com.challenge.github.core.util.SimpleDialog.Companion.showSimpleDialog
 import com.challenge.github.core.visible
+import com.facebook.shimmer.ShimmerFrameLayout
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -37,11 +37,11 @@ class HomeFragment : Fragment() {
     private val viewModel by viewModels<HomeViewModel>()
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var progressBar: ProgressBar
     private lateinit var viewError: View
     private lateinit var ivError: ImageView
     private lateinit var tvErrorTitle: TextView
     private lateinit var tvErrorText: TextView
+    private lateinit var shimmer: ShimmerFrameLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,13 +55,13 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-        progressBar = view.findViewById(R.id.progress_bar)
         recyclerView = view.findViewById(R.id.recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         viewError = view.findViewById(R.id.view_error)
         ivError = view.findViewById(R.id.iv_error)
         tvErrorTitle = view.findViewById(R.id.tv_error_title)
         tvErrorText = view.findViewById(R.id.tv_error_text)
+        shimmer = view.findViewById(R.id.shimmer)
         return view
     }
 
@@ -136,13 +136,15 @@ class HomeFragment : Fragment() {
     }
 
     private fun showContent() {
-        progressBar.gone()
+        shimmer.gone()
+        shimmer.stopShimmer()
         recyclerView.visible()
     }
 
     private fun loadingContent() {
-        progressBar.visible()
-        recyclerView.gone()
+        recyclerView.invisible()
+        shimmer.startShimmer()
+        shimmer.visible()
     }
 
     private fun showErrorScreen(context: Context) {

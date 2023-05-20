@@ -11,4 +11,7 @@
     <color name="orange">#FFA500</color>
     <color name="gray_blue">#36454f</color>
     <color name="light_gray">#f5f5f5</color>
+    <color name="design_shimmer">#C8C5C5</color>
+    <color name="design_shimmer_dark">#A3A0A0</color>
+    <color name="design_shimmer_light">#E8E5E5</color>
 </resources>
