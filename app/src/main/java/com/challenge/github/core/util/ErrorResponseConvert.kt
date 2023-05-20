@@ -6,13 +6,13 @@ import okhttp3.ResponseBody
 
 class ErrorResponseConvert {
     companion object {
-         private fun createMoshi(): Moshi {
+        private fun createMoshi(): Moshi {
             return Moshi.Builder()
                 .add(KotlinJsonAdapterFactory())
                 .build()
         }
 
-         fun convertErrorBody(errorBody: ResponseBody?): ErrorResponse? {
+        fun convertErrorBody(errorBody: ResponseBody?): ErrorResponse? {
             return try {
                 errorBody?.source()?.let {
                     val moshiAdapter = createMoshi().adapter(ErrorResponse::class.java)

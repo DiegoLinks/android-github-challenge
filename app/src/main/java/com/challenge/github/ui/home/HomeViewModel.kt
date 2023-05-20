@@ -27,7 +27,7 @@ class HomeViewModel @Inject constructor(
     private val _error = MutableLiveData<String>()
     val error: LiveData<String> = _error
 
-    private var receivedUserList: List<User> = listOf()
+    var receivedUserList: List<User> = listOf()
     private var currentSearchText: String = ""
 
     fun getUserList() {
