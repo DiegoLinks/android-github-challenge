@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">GitHub</string>
+    <string name="repositories_label">Repositories</string>
+    <string name="gists_label" translatable="false">Gists</string>
+    <string name="followers_and_following_label" formatted="true">%d following • %d followers</string>
+    <string name="error_title">Oops! An error has occurred.</string>
+    <string name="error_text">We are working to resolve it.</string>
 </resources>

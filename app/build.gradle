@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -39,6 +41,46 @@ dependencies {
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.13.2'
+    testImplementation 'androidx.arch.core:core-testing:2.2.0'
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.0'
+    testImplementation 'io.mockk:mockk:1.12.0'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    //Jetpack Navigation - Helps to manage and navigate between different destinations (Activities, Fragments, etc) in a safe way and with good practices.
+    //Jetpack Navigation - Serve para gerenciar e navegar entre diferentes destinos (Activities, Fragments, etc) de forma segura e com boas práticas.
+    implementation("androidx.navigation:navigation-fragment-ktx:$navigation_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$navigation_version")
+
+    //Hilt - Powerful and easy-to-use library that simplifies dependency injection.
+    //Hilt - Biblioteca poderosa e fácil de usar que simplifica a injeção de dependência.
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+
+    //Retrofit - Biblioteca que simplifica o processo de fazer requisições de rede em aplicativos Android.
+    //Retrofit - Library that simplifies the process of making network requests in Android applications.
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    //Kotlin Serialization - Biblioteca que permite a serialização e desserialização de objetos JSON em aplicativos Kotlin.
+    //Kotlin Serialization - Library that enables serialization and deserialization of JSON objects in Kotlin applications.
+    implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0'
+    implementation 'com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0'
+
+    //OkHttp Logging Interceptor - Provides logging capabilities for OkHttp, allowing you to intercept and log network requests and responses.
+    //OkHttp Logging Interceptor - Fornece recursos de logging para o OkHttp, permitindo interceptar e registrar requisições e respostas de rede.
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.2'
+
+    //Glide - Is an image loading and display library on Android read more in https://github.com/bumptech/glide
+    //Glide - É uma biblioteca para o carregamento de imagens leia mais em https://github.com/bumptech/glide
+    implementation 'com.github.bumptech.glide:glide:4.15.1'
+
+    //Moshi - Biblioteca de serialização/desserialização de JSON.
+    //Moshi - JSON serialization/deserialization library.
+    implementation "com.squareup.moshi:moshi:$moshi_version"
+    implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
+
+    //Shimmer - Permite criar animações de loading para melhorar a experiência do usuário durante o carregamento de conteúdo.
+    //Shimmer - Allows you to create loading animations to improve the user experience while loading content.
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
 }
