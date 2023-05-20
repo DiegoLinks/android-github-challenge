@@ -79,4 +79,8 @@ dependencies {
     //Moshi - JSON serialization/deserialization library.
     implementation "com.squareup.moshi:moshi:$moshi_version"
     implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
+
+    //Shimmer - Permite criar animações de loading para melhorar a experiência do usuário durante o carregamento de conteúdo.
+    //Shimmer - Allows you to create loading animations to improve the user experience while loading content.
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
 }
